@@ -72,6 +72,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IPersonService.cs" />
     <Compile Include="IWorkersService.cs" />
     <Compile Include="IPatientsService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -79,6 +80,12 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Clinic.Domains\Clinic.Domains.csproj">
+      <Project>{06C62205-1AE5-48A5-A374-670A743F1498}</Project>
+      <Name>Clinic.Domains</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

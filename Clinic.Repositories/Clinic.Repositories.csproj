@@ -73,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstract\BaseRepository.cs" />
+    <Compile Include="Abstract\IPatientRepository.cs" />
     <Compile Include="Abstract\IRepository.cs" />
     <Compile Include="PatientRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

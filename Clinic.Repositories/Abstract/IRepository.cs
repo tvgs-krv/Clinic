@@ -13,7 +13,7 @@ namespace Clinic.Repositories.Abstract
         NpgsqlConnection ConnectDb();
         string CreateTable<T>(T tableColumns, NpgsqlConnection connection);
         void Add<T>(T person);
-        void Edit(int id);
+        void Update(int id);
         void Delete(int id);
 
     }

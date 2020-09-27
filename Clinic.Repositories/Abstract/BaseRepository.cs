@@ -9,7 +9,7 @@ using Npgsql;
 
 namespace Clinic.Repositories.Abstract
 {
-    public abstract class BaseRepository : IRepository
+    public class BaseRepository : IRepository
     {
         public string TableName { get; set; }
         public NpgsqlConnection ConnectDb()
@@ -120,7 +120,7 @@ namespace Clinic.Repositories.Abstract
             }
         }
 
-        public void Edit(int id)
+        public void Update(int id)
         {
             throw new NotImplementedException();
         }

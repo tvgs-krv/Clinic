@@ -3,7 +3,10 @@
 
 namespace Clinic.Domains
 {
-    class VisitHistory:VisitHistoryEntity
+    // Вот здесь не понятно, мне нужно создать аналогичные интерфейсы со свойствами как в слое DATA?
+    // или же вынести эти интерфейсы в отдельный слой и уже их вставлять как независимые от слоя
+
+    class VisitHistory
     {
     }
 }
