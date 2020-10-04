@@ -21,5 +21,23 @@ namespace Clinic.Mappers
 
             };
         }
+
+        public static Patient FromEntity(this PatientEntity patientEntity)
+        {
+            return new Patient
+            {
+                Id = patientEntity.Id,
+                FirstName = patientEntity.FirstName,
+                MiddleName = patientEntity.MiddleName,
+                LastName = patientEntity.LastName,
+                Age = patientEntity.Age,
+                CreatedDate = patientEntity.CreatedDate,
+                Gender = patientEntity.Gender,
+                IsDeleted = patientEntity.IsDeleted,
+                SoftDeletedDate = patientEntity.SoftDeletedDate
+
+            };
+        }
+
     }
 }

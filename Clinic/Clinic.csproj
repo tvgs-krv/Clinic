@@ -45,6 +45,7 @@
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
     </Reference>
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Memory.4.5.3\lib\netstandard2.0\System.Memory.dll</HintPath>
@@ -83,6 +84,23 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Clinic.Domains\Clinic.Domains.csproj">
+      <Project>{06C62205-1AE5-48A5-A374-670A743F1498}</Project>
+      <Name>Clinic.Domains</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Clinic.Entities\Clinic.Entities.csproj">
+      <Project>{023FEC5C-C34D-4395-9B5A-FF8F7CF42459}</Project>
+      <Name>Clinic.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Clinic.Repositories\Clinic.Repositories.csproj">
+      <Project>{067688CB-900A-4B22-A329-4B2CE35564DC}</Project>
+      <Name>Clinic.Repositories</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Clinic.Services\Clinic.Services.csproj">
+      <Project>{07E915A7-A550-4ED2-8850-ACC5FE06D4B6}</Project>
+      <Name>Clinic.Services</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

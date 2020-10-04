@@ -12,5 +12,7 @@ namespace Clinic.ServiceContracts
         void Update(T person);
         T Get(int id);
         void Delete(int id);
+
+        bool IsExist(int id);
     }
 }
