@@ -166,58 +166,72 @@ namespace Clinic.Repositories.Abstract
 
         public void Update(DataTable person)
         {
-            try
+            var id = person.Rows[0].Field<int>("id");
+            var connection = ConnectDb();
+            connection.Open();
+            string sql = $"UPDATE {TableName} SET " +
+                         //$"softdeleteddate = :softdeleteddate, " +
+                         $"firstname = :firstname, " +
+                         $"middlename = :middlename, " +
+                         $"lastname = :lastname, " +
+                         $"age = :age, " +
+                         $"gender = :gender, " +
+                         $"isdeleted = :isdeleted " +
+                         $"WHERE id = {id}";
+            using (NpgsqlCommand cmd = new NpgsqlCommand(sql, connection))
             {
-                var id = person.Rows[0].Field<int>("id");
-                var connection = ConnectDb();
-                connection.Open();
-                string sql = $"UPDATE {TableName} SET " +
-                             //$"softdeleteddate = :softdeleteddate, " +
-                             $"firstname = :firstname, " +
-                             $"middlename = :middlename, " +
-                             $"lastname = :lastname, " +
-                             $"age = :age, " +
-                             $"gender = :gender, " +
-                             $"isdeleted = :isdeleted " +
-                             $"WHERE id = {id}";
-                using (NpgsqlCommand cmd = new NpgsqlCommand(sql, connection))
-                {
-                    //cmd.Parameters.Add(new NpgsqlParameter("softdeleteddate", NpgsqlTypes.NpgsqlDbType.Date));
-                    cmd.Parameters.Add(new NpgsqlParameter("firstname", NpgsqlTypes.NpgsqlDbType.Text));
-                    cmd.Parameters.Add(new NpgsqlParameter("middlename", NpgsqlTypes.NpgsqlDbType.Text));
-                    cmd.Parameters.Add(new NpgsqlParameter("lastname", NpgsqlTypes.NpgsqlDbType.Text));
-                    cmd.Parameters.Add(new NpgsqlParameter("age", NpgsqlTypes.NpgsqlDbType.Integer));
-                    cmd.Parameters.Add(new NpgsqlParameter("gender", NpgsqlTypes.NpgsqlDbType.Text));
-                    cmd.Parameters.Add(new NpgsqlParameter("isdeleted", NpgsqlTypes.NpgsqlDbType.Boolean));
-                    //cmd.Parameters[0].Value = "NULL";
-                    //cmd.Parameters[0].Value = person.Rows[0].Field<DateTime?>("softdeleteddate");
-                    cmd.Parameters[0].Value = person.Rows[0].Field<string>("firstname");
-                    cmd.Parameters[1].Value = person.Rows[0].Field<string>("middlename");
-                    cmd.Parameters[2].Value = person.Rows[0].Field<string>("lastname");
-                    cmd.Parameters[3].Value = person.Rows[0].Field<int>("age");
-                    cmd.Parameters[4].Value = person.Rows[0].Field<string>("gender");
-                    cmd.Parameters[5].Value = person.Rows[0].Field<bool>("isdeleted");
-                    cmd.ExecuteNonQuery();
-                }
-                connection.Close();
+                //cmd.Parameters.Add(new NpgsqlParameter("softdeleteddate", NpgsqlTypes.NpgsqlDbType.Date));
+                cmd.Parameters.Add(new NpgsqlParameter("firstname", NpgsqlTypes.NpgsqlDbType.Text));
+                cmd.Parameters.Add(new NpgsqlParameter("middlename", NpgsqlTypes.NpgsqlDbType.Text));
+                cmd.Parameters.Add(new NpgsqlParameter("lastname", NpgsqlTypes.NpgsqlDbType.Text));
+                cmd.Parameters.Add(new NpgsqlParameter("age", NpgsqlTypes.NpgsqlDbType.Integer));
+                cmd.Parameters.Add(new NpgsqlParameter("gender", NpgsqlTypes.NpgsqlDbType.Text));
+                cmd.Parameters.Add(new NpgsqlParameter("isdeleted", NpgsqlTypes.NpgsqlDbType.Boolean));
+                //cmd.Parameters[0].Value = "NULL";
+                //cmd.Parameters[0].Value = person.Rows[0].Field<DateTime?>("softdeleteddate");
+                cmd.Parameters[0].Value = person.Rows[0].Field<string>("firstname");
+                cmd.Parameters[1].Value = person.Rows[0].Field<string>("middlename");
+                cmd.Parameters[2].Value = person.Rows[0].Field<string>("lastname");
+                cmd.Parameters[3].Value = person.Rows[0].Field<int>("age");
+                cmd.Parameters[4].Value = person.Rows[0].Field<string>("gender");
+                cmd.Parameters[5].Value = person.Rows[0].Field<bool>("isdeleted");
+                cmd.ExecuteNonQuery();
             }
-
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-            };
+            connection.Close();
         }
 
         public void Delete(int id)
         {
-            string deleteString = $"DELETE FROM {TableName} WHERE id='{id}'";
+            #region Delete/Drop
+            //string deleteString = $"DELETE FROM {TableName} WHERE id='{id}'";
+            //var connection = ConnectDb();
+            //connection.Open();
+            //using (NpgsqlCommand cmd = new NpgsqlCommand(deleteString, connection))
+            //{
+            //    cmd.ExecuteNonQuery();
+            //}
+            //connection.Close();
+            #endregion
+
+            #region SoftDelete
             var connection = ConnectDb();
             connection.Open();
-            using (NpgsqlCommand cmd = new NpgsqlCommand(deleteString, connection))
+            string sql = $"UPDATE {TableName} SET " +
+                         $"softdeleteddate = :softdeleteddate, " +
+                         $"isdeleted = :isdeleted " +
+                         $"WHERE id = {id}";
+            using (NpgsqlCommand cmd = new NpgsqlCommand(sql, connection))
             {
+                cmd.Parameters.Add(new NpgsqlParameter("softdeleteddate", NpgsqlTypes.NpgsqlDbType.Date));
+                cmd.Parameters.Add(new NpgsqlParameter("isdeleted", NpgsqlTypes.NpgsqlDbType.Boolean));
+                cmd.Parameters[0].Value = DateTime.Now;
+                cmd.Parameters[1].Value = true;
                 cmd.ExecuteNonQuery();
             }
             connection.Close();
+            #endregion
+
+
         }
 
         public bool IsExist(int id)

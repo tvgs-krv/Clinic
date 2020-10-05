@@ -24,11 +24,9 @@ namespace Clinic
             patient.MiddleName = "АВДОСИЙ";
             patient.Age = 53;
             PatientsService patientsService = new PatientsService(connectionString);
-            patientsService.Add(patient);
-            patientsService.Update(patient);
-            //patientsService.Delete(3);
-
-            //Console.WriteLine(patientsService.Get(3));
+            //patientsService.Add(patient);
+            //patientsService.Update(patient);
+            patientsService.Delete(1);
 
             Console.ReadKey();
         }
