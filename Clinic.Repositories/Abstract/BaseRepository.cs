@@ -52,8 +52,8 @@ namespace Clinic.Repositories.Abstract
                                    $"Id CHAR(256) CONSTRAINT Id PRIMARY KEY," +
                                    $"CreatedDate DATE," +
                                    $"SoftDeletedDate DATE," +
-                                   $"TakingOfficeDate DATE," +
-                                   $"EmploymentDateTime DATE," +
+                                   $"StartingWorkDate DATE," +
+                                   $"HiringDateTime DATE," +
                                    $"FirstName VARCHAR(30)," +
                                    $"MiddleName VARCHAR(30)," +
                                    $"LastName VARCHAR(30)," +
@@ -122,8 +122,8 @@ namespace Clinic.Repositories.Abstract
                                                 $"{worker.Id}," +
                                                 $"'{worker.CreatedDate}'," +
                                                 $"{softDeleteDate}," +
-                                                $"'{worker.TakingOfficeDate}'," +
-                                                $"'{worker.EmploymentDateTime}'," +
+                                                $"'{worker.StartingWorkDate}'," +
+                                                $"'{worker.HiringDateTime}'," +
                                                 $"'{worker.FirstName}'," +
                                                 $"'{worker.MiddleName}'," +
                                                 $"'{worker.LastName}'," +

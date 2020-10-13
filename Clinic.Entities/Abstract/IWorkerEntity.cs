@@ -5,8 +5,8 @@ namespace Clinic.Entities.Abstract
     interface IWorkerEntity
     {
         Position Position { get; set; }
-        DateTime EmploymentDateTime { get; set; }
-        DateTime TakingOfficeDate { get; set; }
+        DateTime HiringDateTime { get; set; }
+        DateTime StartingWorkDate { get; set; }
         string Description { get; set; }
 
     }

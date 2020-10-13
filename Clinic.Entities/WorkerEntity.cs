@@ -11,8 +11,8 @@ namespace Clinic.Entities
         public int Age { get; set; }
         public Gender Gender { get; set; }
         public Position Position { get; set; }
-        public DateTime EmploymentDateTime { get; set; }
-        public DateTime TakingOfficeDate { get; set; }
+        public DateTime HiringDateTime { get; set; }
+        public DateTime StartingWorkDate { get; set; }
         public string Description { get; set; }
     }
 }

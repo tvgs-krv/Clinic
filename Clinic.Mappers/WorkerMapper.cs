@@ -19,9 +19,9 @@ namespace Clinic.Mappers
                 IsDeleted = worker.IsDeleted,
                 SoftDeletedDate = worker.SoftDeletedDate,
                 Description = worker.Description,
-                EmploymentDateTime = worker.EmploymentDateTime,
+                HiringDateTime = worker.EmploymentDateTime,
                 Position = worker.Position,
-                TakingOfficeDate = worker.TakingOfficeDate
+                StartingWorkDate = worker.TakingOfficeDate
 
             };
         }
