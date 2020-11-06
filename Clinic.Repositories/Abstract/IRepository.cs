@@ -15,10 +15,10 @@ namespace Clinic.Repositories.Abstract
         string TableName { get; set; }
         NpgsqlConnection ConnectDb();
         string CreateTable<T>(T tableColumns, NpgsqlConnection connection);
-        void Add<T>(T person);
+        void CreateEntityInDb<T>(T person);
 
-        DataTable Get(int id);
-        void Update(DataTable person);
+        DataTable GetDataFromDb(int id);
+        void UpdateDataInDb(DataTable personEntity);
         void Delete(int id);
         bool IsExist(int id);
 

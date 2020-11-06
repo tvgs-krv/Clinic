@@ -75,7 +75,7 @@ namespace Clinic.Repositories.Abstract
             return TableName;
         }
 
-        public void Add<T>(T person)
+        public void CreateEntityInDb<T>(T person)
         {
             var connection = ConnectDb();
             try
@@ -149,7 +149,7 @@ namespace Clinic.Repositories.Abstract
             }
         }
 
-        public DataTable Get(int id)
+        public DataTable GetDataFromDb(int id)
         {
             var connection = ConnectDb();
             string sql = $"SELECT * FROM {TableName} where id='{id}'";
@@ -164,9 +164,9 @@ namespace Clinic.Repositories.Abstract
             }
         }
 
-        public void Update(DataTable person)
+        public void UpdateDataInDb(DataTable personEntity)
         {
-            var id = person.Rows[0].Field<int>("id");
+            var id = personEntity.Rows[0].Field<int>("id");
             var connection = ConnectDb();
             connection.Open();
             string sql = $"UPDATE {TableName} SET " +
@@ -180,7 +180,7 @@ namespace Clinic.Repositories.Abstract
                          $"WHERE id = {id}";
             using (NpgsqlCommand cmd = new NpgsqlCommand(sql, connection))
             {
-                //cmd.Parameters.Add(new NpgsqlParameter("softdeleteddate", NpgsqlTypes.NpgsqlDbType.Date));
+                //cmd.Parameters.Create(new NpgsqlParameter("softdeleteddate", NpgsqlTypes.NpgsqlDbType.Date));
                 cmd.Parameters.Add(new NpgsqlParameter("firstname", NpgsqlTypes.NpgsqlDbType.Text));
                 cmd.Parameters.Add(new NpgsqlParameter("middlename", NpgsqlTypes.NpgsqlDbType.Text));
                 cmd.Parameters.Add(new NpgsqlParameter("lastname", NpgsqlTypes.NpgsqlDbType.Text));
@@ -188,13 +188,13 @@ namespace Clinic.Repositories.Abstract
                 cmd.Parameters.Add(new NpgsqlParameter("gender", NpgsqlTypes.NpgsqlDbType.Text));
                 cmd.Parameters.Add(new NpgsqlParameter("isdeleted", NpgsqlTypes.NpgsqlDbType.Boolean));
                 //cmd.Parameters[0].Value = "NULL";
-                //cmd.Parameters[0].Value = person.Rows[0].Field<DateTime?>("softdeleteddate");
-                cmd.Parameters[0].Value = person.Rows[0].Field<string>("firstname");
-                cmd.Parameters[1].Value = person.Rows[0].Field<string>("middlename");
-                cmd.Parameters[2].Value = person.Rows[0].Field<string>("lastname");
-                cmd.Parameters[3].Value = person.Rows[0].Field<int>("age");
-                cmd.Parameters[4].Value = person.Rows[0].Field<string>("gender");
-                cmd.Parameters[5].Value = person.Rows[0].Field<bool>("isdeleted");
+                //cmd.Parameters[0].Value = personEntity.Rows[0].Field<DateTime?>("softdeleteddate");
+                cmd.Parameters[0].Value = personEntity.Rows[0].Field<string>("firstname");
+                cmd.Parameters[1].Value = personEntity.Rows[0].Field<string>("middlename");
+                cmd.Parameters[2].Value = personEntity.Rows[0].Field<string>("lastname");
+                cmd.Parameters[3].Value = personEntity.Rows[0].Field<int>("age");
+                cmd.Parameters[4].Value = personEntity.Rows[0].Field<string>("gender");
+                cmd.Parameters[5].Value = personEntity.Rows[0].Field<bool>("isdeleted");
                 cmd.ExecuteNonQuery();
             }
             connection.Close();
@@ -230,8 +230,7 @@ namespace Clinic.Repositories.Abstract
             }
             connection.Close();
             #endregion
-
-
+            
         }
 
         public bool IsExist(int id)

@@ -1,6 +1,7 @@
 ﻿using System;
-using Clinic.Domains;
+using Clinic.Controllers;
 using Clinic.Entities;
+using Clinic.Models;
 using Clinic.Services;
 
 namespace Clinic
@@ -10,7 +11,7 @@ namespace Clinic
         static void Main(string[] args)
         {
             var connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["connectToPostgreSql"].ConnectionString;
-            Patient patient = new Patient
+            PatientModel patient = new PatientModel
             {
                 FirstName = "Венедикт",
                 MiddleName = "Альбертович",
@@ -21,13 +22,14 @@ namespace Clinic
                 Id = 2,
                 //SoftDeletedDate = DateTime.Now
             };
-            patient.MiddleName = "АВДОСИЙ";
-            patient.Age = 53;
+            patient.MiddleName = "Вельзевул";
+            patient.Age = 23;
             PatientsService patientsService = new PatientsService(connectionString);
-            //patientsService.Add(patient);
-            //patientsService.Update(patient);
-            patientsService.Delete(1);
+            PatientController patientController = new PatientController(patientsService);
 
+            //Console.WriteLine($"{getPatient.Id}\t{getPatient.FirstName}\t{getPatient.MiddleName}\t{getPatient.Gender}\t{getPatient.CreatedDate}");
+
+            patientController.Delete(2);
             Console.ReadKey();
         }
 

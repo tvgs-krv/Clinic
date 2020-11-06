@@ -41,3 +41,6 @@ D:\YandexDisk\YandexDisk\Documents\01_FREELANCE\Clinic\Clinic.Services\bin\Debug
 D:\YandexDisk\YandexDisk\Documents\01_FREELANCE\Clinic\Clinic.Services\obj\Debug\Clinic.Services.csproj.CopyComplete
 D:\YandexDisk\YandexDisk\Documents\01_FREELANCE\Clinic\Clinic.Services\obj\Debug\Clinic.Services.dll
 D:\YandexDisk\YandexDisk\Documents\01_FREELANCE\Clinic\Clinic.Services\obj\Debug\Clinic.Services.pdb
+D:\YandexDisk\YandexDisk\Documents\01_FREELANCE\Clinic\Clinic.Services\bin\Debug\Clinic.Models.dll
+D:\YandexDisk\YandexDisk\Documents\01_FREELANCE\Clinic\Clinic.Services\bin\Debug\Clinic.Models.pdb
+D:\YandexDisk\YandexDisk\Documents\01_FREELANCE\Clinic\Clinic.Services\bin\Debug\Clinic.Models.dll.config

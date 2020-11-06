@@ -5,8 +5,6 @@ using Clinic.Entities;
 namespace Clinic.Domains
 {
     public class Patient 
-        // Вот здесь не понятно, мне нужно создать аналогичные интерфейсы со свойствами как в слое DATA?
-        // или же вынести эти интерфейсы в отдельный слой и уже их вставлять как независимые от слоя
     {
         public int Id { get; set; }
         public DateTime CreatedDate { get; set; }

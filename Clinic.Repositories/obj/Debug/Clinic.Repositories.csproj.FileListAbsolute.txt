@@ -32,3 +32,9 @@ D:\YandexDisk\YandexDisk\Documents\01_FREELANCE\Clinic\Clinic.Repositories\obj\D
 D:\YandexDisk\YandexDisk\Documents\01_FREELANCE\Clinic\Clinic.Repositories\obj\Debug\Clinic.Repositories.csproj.CopyComplete
 D:\YandexDisk\YandexDisk\Documents\01_FREELANCE\Clinic\Clinic.Repositories\obj\Debug\Clinic.Repositories.dll
 D:\YandexDisk\YandexDisk\Documents\01_FREELANCE\Clinic\Clinic.Repositories\obj\Debug\Clinic.Repositories.pdb
+D:\YandexDisk\YandexDisk\Documents\01_FREELANCE\Clinic\Clinic.Repositories\bin\Debug\Clinic.Mappers.dll
+D:\YandexDisk\YandexDisk\Documents\01_FREELANCE\Clinic\Clinic.Repositories\bin\Debug\Clinic.Models.dll
+D:\YandexDisk\YandexDisk\Documents\01_FREELANCE\Clinic\Clinic.Repositories\bin\Debug\Clinic.Mappers.pdb
+D:\YandexDisk\YandexDisk\Documents\01_FREELANCE\Clinic\Clinic.Repositories\bin\Debug\Clinic.Mappers.dll.config
+D:\YandexDisk\YandexDisk\Documents\01_FREELANCE\Clinic\Clinic.Repositories\bin\Debug\Clinic.Models.pdb
+D:\YandexDisk\YandexDisk\Documents\01_FREELANCE\Clinic\Clinic.Repositories\bin\Debug\Clinic.Models.dll.config

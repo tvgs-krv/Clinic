@@ -72,11 +72,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PatientController.cs" />
+    <Compile Include="WorkerController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Clinic.Domains\Clinic.Domains.csproj">
+      <Project>{06C62205-1AE5-48A5-A374-670A743F1498}</Project>
+      <Name>Clinic.Domains</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Clinic.Mappers\Clinic.Mappers.csproj">
+      <Project>{7E78084B-501C-4C7F-A73D-F753AEB8667F}</Project>
+      <Name>Clinic.Mappers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Clinic.Models\Clinic.Models.csproj">
+      <Project>{769B5238-77A9-4208-AFEC-379530749981}</Project>
+      <Name>Clinic.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Clinic.Services\Clinic.Services.csproj">
+      <Project>{07E915A7-A550-4ED2-8850-ACC5FE06D4B6}</Project>
+      <Name>Clinic.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

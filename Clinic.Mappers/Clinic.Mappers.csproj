@@ -91,6 +91,10 @@
       <Project>{023FEC5C-C34D-4395-9B5A-FF8F7CF42459}</Project>
       <Name>Clinic.Entities</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Clinic.Models\Clinic.Models.csproj">
+      <Project>{769B5238-77A9-4208-AFEC-379530749981}</Project>
+      <Name>Clinic.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

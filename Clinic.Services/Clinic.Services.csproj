@@ -89,6 +89,10 @@
       <Project>{7E78084B-501C-4C7F-A73D-F753AEB8667F}</Project>
       <Name>Clinic.Mappers</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Clinic.Models\Clinic.Models.csproj">
+      <Project>{769B5238-77A9-4208-AFEC-379530749981}</Project>
+      <Name>Clinic.Models</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Clinic.Repositories\Clinic.Repositories.csproj">
       <Project>{067688cb-900a-4b22-a329-4b2ce35564dc}</Project>
       <Name>Clinic.Repositories</Name>

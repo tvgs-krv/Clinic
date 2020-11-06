@@ -8,7 +8,7 @@ namespace Clinic.ServiceContracts
 {
     public interface IPersonService<T>
     {
-        T Add(T person);
+        T Create(T patient);
         void Update(T person);
         T Get(int id);
         void Delete(int id);

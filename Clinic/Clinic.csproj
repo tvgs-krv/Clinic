@@ -85,6 +85,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Clinic.Controllers\Clinic.Controllers.csproj">
+      <Project>{5A366905-AADA-4389-9901-FFABC3D41E85}</Project>
+      <Name>Clinic.Controllers</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Clinic.Domains\Clinic.Domains.csproj">
       <Project>{06C62205-1AE5-48A5-A374-670A743F1498}</Project>
       <Name>Clinic.Domains</Name>
@@ -92,6 +96,10 @@
     <ProjectReference Include="..\Clinic.Entities\Clinic.Entities.csproj">
       <Project>{023FEC5C-C34D-4395-9B5A-FF8F7CF42459}</Project>
       <Name>Clinic.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Clinic.Models\Clinic.Models.csproj">
+      <Project>{769B5238-77A9-4208-AFEC-379530749981}</Project>
+      <Name>Clinic.Models</Name>
     </ProjectReference>
     <ProjectReference Include="..\Clinic.Repositories\Clinic.Repositories.csproj">
       <Project>{067688CB-900A-4B22-A329-4B2CE35564DC}</Project>

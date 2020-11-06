@@ -9,10 +9,10 @@ namespace Clinic.Services
     {
         private readonly WorkerRepository _workerRepository;
 
-        public Worker Add(Worker worker)
+        public Worker Create(Worker patient)
         {
-            //_workerRepository.AddPatient(worker.ToEntity());
-            return worker;
+            //_workerRepository.AddPatient(patient.ToEntity());
+            return patient;
         }
 
         public void Update(int id, Worker person)
