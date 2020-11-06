@@ -4,9 +4,6 @@ using Clinic.Entities;
 
 namespace Clinic.Domains
 {
-    // Вот здесь не понятно, мне нужно создать аналогичные интерфейсы со свойствами как в слое DATA?
-    // или же вынести эти интерфейсы в отдельный слой и уже их вставлять как независимые от слоя
-
     public class Worker
     {
         public int Id { get; set; }
@@ -19,8 +16,8 @@ namespace Clinic.Domains
         public int Age { get; set; }
         public Gender Gender { get; set; }
         public Position Position { get; set; }
-        public DateTime EmploymentDateTime { get; set; }
-        public DateTime TakingOfficeDate { get; set; }
+        public DateTime HiringDateTime { get; set; }
+        public DateTime StartingWorkDate { get; set; }
         public string Description { get; set; }
 
     }

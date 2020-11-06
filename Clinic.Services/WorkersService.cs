@@ -1,33 +1,35 @@
 ﻿using Clinic.Domains;
+using Clinic.Entities;
 using Clinic.Mappers;
+using Clinic.Models;
 using Clinic.Repositories;
 using Clinic.ServiceContracts;
 
 namespace Clinic.Services
 {
-    public class WorkersService : IPersonService<Worker>
+    public class WorkersService
     {
         private readonly WorkerRepository _workerRepository;
 
-        public Worker Create(Worker patient)
+        public Worker Create(WorkerModel workerModel)
         {
-            //_workerRepository.AddPatient(patient.ToEntity());
-            return patient;
+            var worker = workerModel.ToDomain();
+            _workerRepository.Create(worker);
+            return worker;
+
         }
 
-        public void Update(int id, Worker person)
+        public Worker Update(WorkerModel workerModel)
         {
-            throw new System.NotImplementedException();
-        }
-
-        public void Update(Worker worker)
-        {
-            throw new System.NotImplementedException();
+            var worker = workerModel.ToDomain();
+            _workerRepository.Update(worker);
+            return worker;
         }
 
         public Worker Get(int id)
         {
-            throw new System.NotImplementedException();
+            WorkerEntity workerEntity = _workerRepository.Get(id);
+            return workerEntity.ToDomain();
         }
 
         public void Delete(int id)
@@ -35,14 +37,12 @@ namespace Clinic.Services
             _workerRepository.Delete(id);
         }
 
-        public bool IsExist(int id)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public WorkersService()
+        public WorkersService(string connectionString)
         {
             _workerRepository = new WorkerRepository();
+            _workerRepository.ConnectionString = connectionString;
+            var currentConnection = _workerRepository.ConnectDb();
+            _workerRepository.CreateTable(new Worker(), currentConnection);
         }
 
     }

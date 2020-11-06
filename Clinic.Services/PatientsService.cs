@@ -37,11 +37,6 @@ namespace Clinic.Services
             _patientRepository.Delete(id);
         }
 
-        public bool IsExist(int id)
-        {
-            return _patientRepository.IsExist(id); ;
-        }
-
         public PatientsService(string connectionString)
         {
             _patientRepository = new PatientRepository();

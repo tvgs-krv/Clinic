@@ -18,7 +18,6 @@ D:\YandexDisk\YandexDisk\Documents\01_FREELANCE\Clinic\Clinic.Controllers\bin\De
 D:\YandexDisk\YandexDisk\Documents\01_FREELANCE\Clinic\Clinic.Controllers\bin\Debug\System.Threading.Tasks.Extensions.dll
 D:\YandexDisk\YandexDisk\Documents\01_FREELANCE\Clinic\Clinic.Controllers\bin\Debug\System.ValueTuple.dll
 D:\YandexDisk\YandexDisk\Documents\01_FREELANCE\Clinic\Clinic.Controllers\bin\Debug\Clinic.Entities.dll
-D:\YandexDisk\YandexDisk\Documents\01_FREELANCE\Clinic\Clinic.Controllers\bin\Debug\Clinic.ServiceContracts.dll
 D:\YandexDisk\YandexDisk\Documents\01_FREELANCE\Clinic\Clinic.Controllers\bin\Debug\Clinic.Repositories.dll
 D:\YandexDisk\YandexDisk\Documents\01_FREELANCE\Clinic\Clinic.Controllers\bin\Debug\Clinic.Domains.pdb
 D:\YandexDisk\YandexDisk\Documents\01_FREELANCE\Clinic\Clinic.Controllers\bin\Debug\Clinic.Domains.dll.config
@@ -40,8 +39,6 @@ D:\YandexDisk\YandexDisk\Documents\01_FREELANCE\Clinic\Clinic.Controllers\bin\De
 D:\YandexDisk\YandexDisk\Documents\01_FREELANCE\Clinic\Clinic.Controllers\bin\Debug\System.ValueTuple.xml
 D:\YandexDisk\YandexDisk\Documents\01_FREELANCE\Clinic\Clinic.Controllers\bin\Debug\Clinic.Entities.pdb
 D:\YandexDisk\YandexDisk\Documents\01_FREELANCE\Clinic\Clinic.Controllers\bin\Debug\Clinic.Entities.dll.config
-D:\YandexDisk\YandexDisk\Documents\01_FREELANCE\Clinic\Clinic.Controllers\bin\Debug\Clinic.ServiceContracts.pdb
-D:\YandexDisk\YandexDisk\Documents\01_FREELANCE\Clinic\Clinic.Controllers\bin\Debug\Clinic.ServiceContracts.dll.config
 D:\YandexDisk\YandexDisk\Documents\01_FREELANCE\Clinic\Clinic.Controllers\bin\Debug\Clinic.Repositories.pdb
 D:\YandexDisk\YandexDisk\Documents\01_FREELANCE\Clinic\Clinic.Controllers\bin\Debug\Clinic.Repositories.dll.config
 D:\YandexDisk\YandexDisk\Documents\01_FREELANCE\Clinic\Clinic.Controllers\obj\Debug\Clinic.Controllers.csproj.CopyComplete

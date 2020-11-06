@@ -48,8 +48,8 @@ namespace Clinic.Repositories.Abstract
                                    $")";
             if (tableColumns is Worker)
             {
-                connectionString = $"CREATE TABLE if not exists {TableName}(" +
-                                   $"Id CHAR(256) CONSTRAINT Id PRIMARY KEY," +
+                connectionString = $"CREATE TABLE if not exists {TableName} (" +
+                                   $"Id INTEGER CONSTRAINT Id PRIMARY KEY," +
                                    $"CreatedDate DATE," +
                                    $"SoftDeletedDate DATE," +
                                    $"StartingWorkDate DATE," +
@@ -60,7 +60,8 @@ namespace Clinic.Repositories.Abstract
                                    $"Description VARCHAR(300)," +
                                    $"Age INTEGER," +
                                    $"Gender VARCHAR(8)," +
-                                   $"IsDeleted BOOLEAN," +
+                                   $"Position VARCHAR(10)," +
+                                   $"IsDeleted BOOLEAN" +
                                    $")";
 
             }
@@ -94,21 +95,23 @@ namespace Clinic.Repositories.Abstract
                         softDeleteDate = "NULL";
                     }
 
-                    insert = $"INSERT INTO {TableName} VALUES ({patient.Id},'{patient.CreatedDate}'," +
-                    $"{softDeleteDate}," +
-                    $"'{patient.FirstName}'," +
-                    $"'{patient.MiddleName}'," +
-                    $"'{patient.LastName}'," +
-                    $"'{patient.Age}'," +
-                    $"'{patient.Gender}'," +
-                    $"{patient.IsDeleted}" +
-                    $") ON CONFLICT (id) DO NOTHING";
+                    insert = $"INSERT INTO {TableName} VALUES (" +
+                             $"{patient.Id}," +
+                             $"'{patient.CreatedDate}'," +
+                            $"{softDeleteDate}," +
+                            $"'{patient.FirstName}'," +
+                            $"'{patient.MiddleName}'," +
+                            $"'{patient.LastName}'," +
+                            $"'{patient.Age}'," +
+                            $"'{patient.Gender}'," +
+                            $"{patient.IsDeleted}" +
+                            $") ON CONFLICT (id) DO NOTHING";
                 }
 
-                if (person is WorkerEntity worker)
+                if (person is WorkerEntity workerEntity)
                 {
                     string softDeleteDate;
-                    var softDel = worker.SoftDeletedDate;
+                    var softDel = workerEntity.SoftDeletedDate;
                     if (softDel != null)
                     {
                         softDeleteDate = "'" + softDel.Value.ToString("yyyy-MM-dd") + "'";
@@ -118,23 +121,24 @@ namespace Clinic.Repositories.Abstract
                         softDeleteDate = "NULL";
                     }
 
-                    var cmd = new NpgsqlCommand($"INSERT INTO {TableName} VALUES (" +
-                                                $"{worker.Id}," +
-                                                $"'{worker.CreatedDate}'," +
-                                                $"{softDeleteDate}," +
-                                                $"'{worker.StartingWorkDate}'," +
-                                                $"'{worker.HiringDateTime}'," +
-                                                $"'{worker.FirstName}'," +
-                                                $"'{worker.MiddleName}'," +
-                                                $"'{worker.LastName}'," +
-                                                $"'{worker.Age}'," +
-                                                $"'{worker.Gender}'," +
-                                                $"'{worker.IsDeleted}'," +
-                                                $")", connection);
-
-                    cmd.ExecuteNonQuery();
-
+                    insert = $"INSERT INTO {TableName} VALUES (" +
+                             $"{workerEntity.Id}," +
+                             $"'{workerEntity.CreatedDate}'," +
+                             $"{softDeleteDate}," +
+                             $"'{workerEntity.StartingWorkDate}'," +
+                             $"'{workerEntity.HiringDateTime}'," +
+                             $"'{workerEntity.FirstName}'," +
+                             $"'{workerEntity.MiddleName}'," +
+                             $"'{workerEntity.LastName}'," +
+                             $"'{workerEntity.Description}'," +
+                             $"'{workerEntity.Age}'," +
+                             $"'{workerEntity.Gender}'," +
+                             $"'{workerEntity.Position}'," +
+                             $"{workerEntity.IsDeleted}" +
+                             $") ON CONFLICT (id) DO NOTHING";
                 }
+
+
 
                 using (var command = new NpgsqlCommand(insert, connection))
                 {
@@ -230,7 +234,7 @@ namespace Clinic.Repositories.Abstract
             }
             connection.Close();
             #endregion
-            
+
         }
 
         public bool IsExist(int id)
