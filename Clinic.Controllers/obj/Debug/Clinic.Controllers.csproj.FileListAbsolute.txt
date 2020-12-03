@@ -44,3 +44,6 @@ D:\YandexDisk\YandexDisk\Documents\01_FREELANCE\Clinic\Clinic.Controllers\bin\De
 D:\YandexDisk\YandexDisk\Documents\01_FREELANCE\Clinic\Clinic.Controllers\obj\Debug\Clinic.Controllers.csproj.CopyComplete
 D:\YandexDisk\YandexDisk\Documents\01_FREELANCE\Clinic\Clinic.Controllers\obj\Debug\Clinic.Controllers.dll
 D:\YandexDisk\YandexDisk\Documents\01_FREELANCE\Clinic\Clinic.Controllers\obj\Debug\Clinic.Controllers.pdb
+D:\YandexDisk\YandexDisk\Documents\01_FREELANCE\Clinic\Clinic.Controllers\bin\Debug\Clinic.Validation.dll
+D:\YandexDisk\YandexDisk\Documents\01_FREELANCE\Clinic\Clinic.Controllers\bin\Debug\Clinic.Validation.pdb
+D:\YandexDisk\YandexDisk\Documents\01_FREELANCE\Clinic\Clinic.Controllers\bin\Debug\Clinic.Validation.dll.config

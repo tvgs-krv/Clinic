@@ -97,6 +97,10 @@
       <Project>{07E915A7-A550-4ED2-8850-ACC5FE06D4B6}</Project>
       <Name>Clinic.Services</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Clinic.Validation\Clinic.Validation.csproj">
+      <Project>{6561b550-0f41-4e2d-bf3c-3ff8f7a2ed13}</Project>
+      <Name>Clinic.Validation</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

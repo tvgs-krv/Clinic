@@ -1,16 +1,17 @@
-﻿using System;
-using Clinic.Entities;
+﻿using Clinic.Entities;
+using System;
+using Clinic.Validation.Abstraction;
 
 namespace Clinic.Models
 {
-    public class WorkerModel
+    public class WorkerModel : IWorkerModel
     {
         public int Id { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime? SoftDeletedDate { get; set; }
         public bool IsDeleted { get; set; }
         public string FirstName { get; set; }
-        public string? MiddleName { get; set; }
+        public string MiddleName { get; set; }
         public string LastName { get; set; }
         public int Age { get; set; }
         public Gender Gender { get; set; }

@@ -6,6 +6,7 @@ namespace Clinic.Mappers
 {
     public static class WorkerMapper
     {
+        
         public static WorkerEntity ToEntity(this Worker worker)
         {
             return new WorkerEntity
@@ -67,7 +68,6 @@ namespace Clinic.Mappers
 
             };
         }
-
 
         public static WorkerModel ToModel(this Worker worker)
         {

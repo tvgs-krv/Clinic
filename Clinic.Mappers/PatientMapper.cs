@@ -6,6 +6,7 @@ namespace Clinic.Mappers
 {
     public static class PatientMapper
     {
+
         public static PatientEntity ToEntity(this Patient patient)
         {
             return new PatientEntity
@@ -53,8 +54,7 @@ namespace Clinic.Mappers
                 SoftDeletedDate = patientModel.SoftDeletedDate
             };
         }
-
-
+        
         public static PatientModel ToModel(this Patient patient)
         {
             return new PatientModel

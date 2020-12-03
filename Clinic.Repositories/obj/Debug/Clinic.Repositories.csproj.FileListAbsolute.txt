@@ -38,3 +38,6 @@ D:\YandexDisk\YandexDisk\Documents\01_FREELANCE\Clinic\Clinic.Repositories\bin\D
 D:\YandexDisk\YandexDisk\Documents\01_FREELANCE\Clinic\Clinic.Repositories\bin\Debug\Clinic.Mappers.dll.config
 D:\YandexDisk\YandexDisk\Documents\01_FREELANCE\Clinic\Clinic.Repositories\bin\Debug\Clinic.Models.pdb
 D:\YandexDisk\YandexDisk\Documents\01_FREELANCE\Clinic\Clinic.Repositories\bin\Debug\Clinic.Models.dll.config
+D:\YandexDisk\YandexDisk\Documents\01_FREELANCE\Clinic\Clinic.Repositories\bin\Debug\Clinic.Validation.dll
+D:\YandexDisk\YandexDisk\Documents\01_FREELANCE\Clinic\Clinic.Repositories\bin\Debug\Clinic.Validation.pdb
+D:\YandexDisk\YandexDisk\Documents\01_FREELANCE\Clinic\Clinic.Repositories\bin\Debug\Clinic.Validation.dll.config

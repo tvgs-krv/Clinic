@@ -8,6 +8,7 @@ namespace Clinic.Controllers
     public class PatientController
     {
         private readonly PatientsService _patientsService;
+
         public PatientController(PatientsService patientsService)
         {
             _patientsService = patientsService;
@@ -23,6 +24,7 @@ namespace Clinic.Controllers
             Patient patient = _patientsService.Get(id);
             return patient.ToModel();
         }
+
         public PatientModel Update(PatientModel patientModel)
         {
             var patient = _patientsService.Update(patientModel);

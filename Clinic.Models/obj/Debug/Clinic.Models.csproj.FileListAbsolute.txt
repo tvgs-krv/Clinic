@@ -29,3 +29,9 @@ D:\YandexDisk\YandexDisk\Documents\01_FREELANCE\Clinic\Clinic.Models\obj\Debug\C
 D:\YandexDisk\YandexDisk\Documents\01_FREELANCE\Clinic\Clinic.Models\obj\Debug\Clinic.Models.csproj.CopyComplete
 D:\YandexDisk\YandexDisk\Documents\01_FREELANCE\Clinic\Clinic.Models\obj\Debug\Clinic.Models.dll
 D:\YandexDisk\YandexDisk\Documents\01_FREELANCE\Clinic\Clinic.Models\obj\Debug\Clinic.Models.pdb
+D:\YandexDisk\YandexDisk\Documents\01_FREELANCE\Clinic\Clinic.Models\bin\Debug\Clinic.Validation.dll
+D:\YandexDisk\YandexDisk\Documents\01_FREELANCE\Clinic\Clinic.Models\bin\Debug\Clinic.Domains.dll
+D:\YandexDisk\YandexDisk\Documents\01_FREELANCE\Clinic\Clinic.Models\bin\Debug\Clinic.Validation.pdb
+D:\YandexDisk\YandexDisk\Documents\01_FREELANCE\Clinic\Clinic.Models\bin\Debug\Clinic.Validation.dll.config
+D:\YandexDisk\YandexDisk\Documents\01_FREELANCE\Clinic\Clinic.Models\bin\Debug\Clinic.Domains.pdb
+D:\YandexDisk\YandexDisk\Documents\01_FREELANCE\Clinic\Clinic.Models\bin\Debug\Clinic.Domains.dll.config

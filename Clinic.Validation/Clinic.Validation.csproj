@@ -78,6 +78,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstraction\IPatientModel.cs" />
+    <Compile Include="Abstraction\IWorkerModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ValidationAttribute\WorkerValidationAttribute.cs" />
     <Compile Include="ValidationAttribute\PatientValidationAttribute.cs" />
@@ -96,5 +98,6 @@
       <Name>Clinic.Entities</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

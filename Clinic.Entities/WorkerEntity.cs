@@ -6,7 +6,7 @@ namespace Clinic.Entities
     public class WorkerEntity:EntityBase, IPersonEntity, IWorkerEntity
     {
         public string FirstName { get; set; }
-        public string? MiddleName { get; set; }
+        public string MiddleName { get; set; }
         public string LastName { get; set; }
         public int Age { get; set; }
         public Gender Gender { get; set; }

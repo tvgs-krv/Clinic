@@ -15,15 +15,16 @@ namespace Clinic.Repositories.Abstract
     public class BaseRepository : IRepository
     {
         public string TableName { get; set; }
+
         public string ConnectionString { get; set; }
 
         public NpgsqlConnection ConnectDb()
         {
-            //connectionString = "Server=127.0.0.1;Port=5432;User Id=postgres;Password=123456789";
+            //request = "Server=127.0.0.1;Port=5432;User Id=postgres;Password=123456789";
             return new NpgsqlConnection(ConnectionString);
         }
 
-        public string CreateTable<T>(T tableColumns, NpgsqlConnection connection)
+        private string CreateTable<T>(T tableColumns, NpgsqlConnection connection)
         {
             if (IsNullOrEmpty(TableName))
                 throw new ArgumentNullException(nameof(TableName));
@@ -46,6 +47,7 @@ namespace Clinic.Repositories.Abstract
                                    $"Gender VARCHAR(8)," +
                                    $"IsDeleted BOOLEAN" +
                                    $")";
+
             if (tableColumns is Worker)
             {
                 connectionString = $"CREATE TABLE if not exists {TableName} (" +
@@ -76,7 +78,29 @@ namespace Clinic.Repositories.Abstract
             return TableName;
         }
 
-        public void CreateEntityInDb<T>(T person)
+        public string CreateEntity(string request)
+        {
+            var connection = ConnectDb();
+
+            if (IsNullOrEmpty(TableName))
+                throw new ArgumentNullException(nameof(TableName));
+            if (connection == null)
+                throw new ArgumentNullException(nameof(connection));
+            if (IsNullOrEmpty(request))
+                throw new ArgumentNullException(nameof(request));
+
+            using (var command = new NpgsqlCommand(request, connection))
+            {
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
+
+            connection.Close();
+            return TableName;
+        }
+
+
+        private void CreateEntityInDb<T>(T person)
         {
             var connection = ConnectDb();
             try

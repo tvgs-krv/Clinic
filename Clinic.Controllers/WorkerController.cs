@@ -24,6 +24,7 @@ namespace Clinic.Controllers
             Worker worker = _workersService.Get(id);
             return worker.ToModel();
         }
+
         public WorkerModel Update(WorkerModel workerModel)
         {
             var worker = _workersService.Update(workerModel);

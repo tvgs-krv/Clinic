@@ -8,6 +8,7 @@ using Clinic.Domains;
 using Clinic.Entities;
 using Clinic.Mappers;
 using Clinic.Repositories.Abstract;
+using Npgsql;
 
 namespace Clinic.Repositories
 {
@@ -21,7 +22,7 @@ namespace Clinic.Repositories
         public void Create(Worker worker)
         {
             var workerEntity = worker.ToEntity();
-            CreateEntityInDb(workerEntity);
+            CreateWorkerPosition(workerEntity);
         }
 
         public WorkerEntity Get(int id)
@@ -60,6 +61,7 @@ namespace Clinic.Repositories
         {
             var workerEntity = worker.ToEntity();
             DataTable dt = new DataTable();
+
             dt.Columns.Add("id", typeof(int));
             dt.Columns.Add("createddate", typeof(DateTime));
             dt.Columns.Add("softdeleteddate", typeof(DateTime));
@@ -73,24 +75,92 @@ namespace Clinic.Repositories
             dt.Columns.Add("hiringDateTime", typeof(DateTime));
             dt.Columns.Add("startingWorkDate", typeof(DateTime));
             dt.Columns.Add("position", typeof(string));
+
             dt.Rows.Add(
-                workerEntity.Id, 
+                workerEntity.Id,
                 workerEntity.CreatedDate,
-                workerEntity.SoftDeletedDate, 
-                workerEntity.FirstName, 
+                workerEntity.SoftDeletedDate,
+                workerEntity.FirstName,
                 workerEntity.MiddleName,
-                workerEntity.LastName, 
-                workerEntity.Age, 
-                workerEntity.Gender, 
+                workerEntity.LastName,
+                workerEntity.Age,
+                workerEntity.Gender,
                 workerEntity.IsDeleted,
                 workerEntity.Description,
                 workerEntity.HiringDateTime,
                 workerEntity.StartingWorkDate,
                 workerEntity.Position
             );
+
             UpdateDataInDb(dt);
 
         }
+
+        public string CreateWorkerTable()
+        {
+            var connectionString = $"CREATE TABLE if not exists {TableName} (" +
+                               $"Id INTEGER CONSTRAINT Id PRIMARY KEY," +
+                               $"CreatedDate DATE," +
+                               $"SoftDeletedDate DATE," +
+                               $"StartingWorkDate DATE," +
+                               $"HiringDateTime DATE," +
+                               $"FirstName VARCHAR(30)," +
+                               $"MiddleName VARCHAR(30)," +
+                               $"LastName VARCHAR(30)," +
+                               $"Description VARCHAR(300)," +
+                               $"Age INTEGER," +
+                               $"Gender VARCHAR(8)," +
+                               $"Position VARCHAR(10)," +
+                               $"IsDeleted BOOLEAN" +
+                               $")";
+
+            return CreateEntity(connectionString);
+        }
+
+        public void CreateWorkerPosition(WorkerEntity workerEntity)
+        {
+            try
+            {
+                string softDeleteDate;
+                var softDel = workerEntity.SoftDeletedDate;
+                
+                if (softDel != null)
+                {
+                    softDeleteDate = "'" + softDel.Value.ToString("yyyy-MM-dd") + "'";
+                }
+                else
+                {
+                    softDeleteDate = "NULL";
+                }
+
+                var insert = $"INSERT INTO {TableName} VALUES (" +
+                         $"{workerEntity.Id}," +
+                         $"'{workerEntity.CreatedDate}'," +
+                         $"{softDeleteDate}," +
+                         $"'{workerEntity.StartingWorkDate}'," +
+                         $"'{workerEntity.HiringDateTime}'," +
+                         $"'{workerEntity.FirstName}'," +
+                         $"'{workerEntity.MiddleName}'," +
+                         $"'{workerEntity.LastName}'," +
+                         $"'{workerEntity.Description}'," +
+                         $"'{workerEntity.Age}'," +
+                         $"'{workerEntity.Gender}'," +
+                         $"'{workerEntity.Position}'," +
+                         $"{workerEntity.IsDeleted}" +
+                         $") ON CONFLICT (id) DO NOTHING";
+                
+                CreateEntity(insert);
+
+            }
+
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+
+        }
+
 
     }
 }

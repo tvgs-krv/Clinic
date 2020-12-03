@@ -3,10 +3,12 @@ using Clinic.Domains;
 namespace Clinic.Validation.ValidationAttribute
 {
     
-    class PatientValidationAttribute : System.ComponentModel.DataAnnotations.ValidationAttribute
+    public class PatientValidationAttribute : System.ComponentModel.DataAnnotations.ValidationAttribute
     {
+
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
+
             if (value == null) return new ValidationResult("Пациент не найден");
 
             var patient = value as Patient;

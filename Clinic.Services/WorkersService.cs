@@ -1,4 +1,6 @@
-﻿using Clinic.Domains;
+﻿using System;
+using System.Configuration;
+using Clinic.Domains;
 using Clinic.Entities;
 using Clinic.Mappers;
 using Clinic.Models;
@@ -10,6 +12,24 @@ namespace Clinic.Services
     public class WorkersService
     {
         private readonly WorkerRepository _workerRepository;
+
+        public WorkersService()
+        {
+            _workerRepository = new WorkerRepository();
+            //string connectionString = ConfigurationManager.ConnectionStrings["connectToPostgreSql"].ConnectionString;
+            var cl = ConfigurationManager.OpenExeConfiguration("Clinic.exe");
+            string connectionString = cl.ConnectionStrings.ConnectionStrings["connectToPostgreSql"].ConnectionString;
+            ////Console.WriteLine(cl.ConnectionStrings.ConnectionStrings["connectToPostgreSql"].ConnectionString);
+            //Console.WriteLine(cl.ConnectionStrings.ConnectionStrings["connectToPostgreSql"].ConnectionString);
+            ////foreach (var c in cl.ConnectionStrings.ConnectionStrings)
+            ////{
+            ////    Console.WriteLine(c);
+            ////}
+            //Console.ReadKey();
+            ////var connectionString = ConfigAccess();
+            _workerRepository.ConnectionString = connectionString;
+            _workerRepository.CreateWorkerTable();
+        }
 
         public Worker Create(WorkerModel workerModel)
         {
@@ -37,12 +57,38 @@ namespace Clinic.Services
             _workerRepository.Delete(id);
         }
 
-        public WorkersService(string connectionString)
+
+        private string ConfigAccess()
         {
-            _workerRepository = new WorkerRepository();
-            _workerRepository.ConnectionString = connectionString;
-            var currentConnection = _workerRepository.ConnectDb();
-            _workerRepository.CreateTable(new Worker(), currentConnection);
+            Configuration config = null;
+            string exeConfigPath = GetType().Assembly.Location;
+            try
+            {
+                config = ConfigurationManager.OpenExeConfiguration(exeConfigPath);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+
+            if (config != null)
+            {
+                var value = GetAppSetting(config, "connectToPostgreSql");
+                return value;
+            }
+            return String.Empty;
+        }
+
+        string GetAppSetting(Configuration config, string key)
+        {
+            KeyValueConfigurationElement element = config.AppSettings.Settings[key];
+            if (element != null)
+            {
+                string value = element.Value;
+                if (!string.IsNullOrEmpty(value))
+                    return value;
+            }
+            return string.Empty;
         }
 
     }

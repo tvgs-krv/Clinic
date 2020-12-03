@@ -43,6 +43,7 @@
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
     </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Memory.4.5.3\lib\netstandard2.0\System.Memory.dll</HintPath>
@@ -86,6 +87,10 @@
     <ProjectReference Include="..\Clinic.Entities\Clinic.Entities.csproj">
       <Project>{023FEC5C-C34D-4395-9B5A-FF8F7CF42459}</Project>
       <Name>Clinic.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Clinic.Validation\Clinic.Validation.csproj">
+      <Project>{6561b550-0f41-4e2d-bf3c-3ff8f7a2ed13}</Project>
+      <Name>Clinic.Validation</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

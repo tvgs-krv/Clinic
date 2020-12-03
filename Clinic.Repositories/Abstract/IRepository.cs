@@ -14,8 +14,8 @@ namespace Clinic.Repositories.Abstract
     {
         string TableName { get; set; }
         NpgsqlConnection ConnectDb();
-        string CreateTable<T>(T tableColumns, NpgsqlConnection connection);
-        void CreateEntityInDb<T>(T person);
+        //string CreateEntity<T>(T tableColumns, NpgsqlConnection connection);
+        //void CreateEntityInDb<T>(T person);
 
         DataTable GetDataFromDb(int id);
         void UpdateDataInDb(DataTable personEntity);

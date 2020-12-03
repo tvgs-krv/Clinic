@@ -47,3 +47,6 @@ D:\YandexDisk\YandexDisk\Documents\01_FREELANCE\Clinic\Clinic\bin\Debug\Clinic.C
 D:\YandexDisk\YandexDisk\Documents\01_FREELANCE\Clinic\Clinic\bin\Debug\Clinic.Controllers.dll.config
 D:\YandexDisk\YandexDisk\Documents\01_FREELANCE\Clinic\Clinic\bin\Debug\Clinic.Models.pdb
 D:\YandexDisk\YandexDisk\Documents\01_FREELANCE\Clinic\Clinic\bin\Debug\Clinic.Models.dll.config
+D:\YandexDisk\YandexDisk\Documents\01_FREELANCE\Clinic\Clinic\bin\Debug\Clinic.Validation.dll
+D:\YandexDisk\YandexDisk\Documents\01_FREELANCE\Clinic\Clinic\bin\Debug\Clinic.Validation.pdb
+D:\YandexDisk\YandexDisk\Documents\01_FREELANCE\Clinic\Clinic\bin\Debug\Clinic.Validation.dll.config

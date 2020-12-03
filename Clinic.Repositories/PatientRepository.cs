@@ -8,6 +8,7 @@ using Clinic.Domains;
 using Clinic.Entities;
 using Clinic.Mappers;
 using Clinic.Repositories.Abstract;
+using Npgsql;
 
 namespace Clinic.Repositories
 {
@@ -19,8 +20,8 @@ namespace Clinic.Repositories
         }
         public void Create(Patient patient)
         {
-            var entity = patient.ToEntity();
-            CreateEntityInDb(entity);
+            PatientEntity entity = patient.ToEntity();
+            CreatePatientPosition(entity);
         }
 
         public PatientEntity Get(int id)
@@ -52,6 +53,7 @@ namespace Clinic.Repositories
         {
             var patientEntity = patient.ToEntity();
             DataTable dt = new DataTable();
+
             dt.Columns.Add("id", typeof(int));
             dt.Columns.Add("createddate", typeof(DateTime));
             dt.Columns.Add("softdeleteddate", typeof(DateTime));
@@ -61,11 +63,74 @@ namespace Clinic.Repositories
             dt.Columns.Add("age", typeof(int));
             dt.Columns.Add("gender", typeof(string));
             dt.Columns.Add("isdeleted", typeof(bool));
-            dt.Rows.Add(patientEntity.Id, patientEntity.CreatedDate,
-                patientEntity.SoftDeletedDate, patientEntity.FirstName, patientEntity.MiddleName,
-                patientEntity.LastName, patientEntity.Age, patientEntity.Gender, patientEntity.IsDeleted);
+
+            dt.Rows.Add(
+                patientEntity.Id,
+                patientEntity.CreatedDate,
+                patientEntity.SoftDeletedDate,
+                patientEntity.FirstName,
+                patientEntity.MiddleName,
+                patientEntity.LastName,
+                patientEntity.Age,
+                patientEntity.Gender,
+                patientEntity.IsDeleted);
+
             UpdateDataInDb(dt);
         }
+
+
+        public string CreatePatientTable()
+        {
+            var connectionString = $"CREATE TABLE if not exists {TableName} (" +
+                                   $"Id INTEGER CONSTRAINT Id PRIMARY KEY," +
+                                   $"CreatedDate DATE," +
+                                   $"SoftDeletedDate DATE," +
+                                   $"FirstName VARCHAR(30)," +
+                                   $"MiddleName VARCHAR(30)," +
+                                   $"LastName VARCHAR(30)," +
+                                   $"Age INTEGER," +
+                                   $"Gender VARCHAR(8)," +
+                                   $"IsDeleted BOOLEAN" +
+                                   $")";
+
+            return CreateEntity(connectionString);
+        }
+
+        public void CreatePatientPosition(PatientEntity patientEntity)
+        {
+            try
+            {
+                string softDeleteDate;
+                var softDel = patientEntity.SoftDeletedDate;
+                
+                if (softDel != null)
+                    softDeleteDate = "'" + softDel.Value.ToString("yyyy-MM-dd") + "'";
+                else
+                    softDeleteDate = "NULL";
+
+                var insert = $"INSERT INTO {TableName} VALUES (" +
+                             $"{patientEntity.Id}," +
+                             $"'{patientEntity.CreatedDate}'," +
+                             $"{softDeleteDate}," +
+                             $"'{patientEntity.FirstName}'," +
+                             $"'{patientEntity.MiddleName}'," +
+                             $"'{patientEntity.LastName}'," +
+                             $"'{patientEntity.Age}'," +
+                             $"'{patientEntity.Gender}'," +
+                             $"{patientEntity.IsDeleted}" +
+                             $") ON CONFLICT (id) DO NOTHING";
+                
+                CreateEntity(insert);
+            }
+
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+
+        }
+
 
     }
 }

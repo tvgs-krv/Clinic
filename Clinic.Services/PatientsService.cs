@@ -12,6 +12,15 @@ namespace Clinic.Services
     public class PatientsService
     {
         private readonly PatientRepository _patientRepository;
+
+        public PatientsService()
+        {
+            _patientRepository = new PatientRepository();
+            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["connectToPostgreSql"].ConnectionString;
+            _patientRepository.ConnectionString = connectionString;
+            _patientRepository.CreatePatientTable();
+        }
+
         public Patient Create(PatientModel patientModel)
         {
             var patient = patientModel.ToDomain();
@@ -37,13 +46,6 @@ namespace Clinic.Services
             _patientRepository.Delete(id);
         }
 
-        public PatientsService(string connectionString)
-        {
-            _patientRepository = new PatientRepository();
-            _patientRepository.ConnectionString = connectionString;
-            var currentConnection = _patientRepository.ConnectDb();
-            _patientRepository.CreateTable(new Patient(), currentConnection);
-        }
 
     }
 }
